@@ -1,0 +1,7 @@
+:root {
+	-webkit-tap-highlight-color: transparent;
+}
+
+[demo_body] {
+	margin: var(--mol_gap_block);
+}

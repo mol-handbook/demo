@@ -1,0 +1,3 @@
+$demo_mol $demo_scenes
+	scenes /
+		<= Button $demo_mol_button

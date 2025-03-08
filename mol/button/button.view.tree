@@ -1,0 +1,13 @@
+$demo_mol_button $demo_scenes
+	scenes /
+		<= Major_scene $demo_scene
+			scene <= Major $mol_button_major
+				title \Нажми на меня
+		<= Major_disabled_scene $demo_scene
+			scene <= Major_disabled $mol_button_major
+				enabled false
+				title \Не можешь на меня нажать?
+		<= Major_click_scene $demo_scene
+			scene <= Major_click $mol_button_major
+				click? <=> click_action? null
+				title \Нажми на меня

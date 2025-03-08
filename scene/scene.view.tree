@@ -1,0 +1,4 @@
+$demo_scene $mol_view
+	scene null
+	sub /
+		<= scene

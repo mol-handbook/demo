@@ -1,0 +1,5 @@
+$demo $demo_scenes
+	plugins /
+		<= Theme $mol_theme_auto
+	scenes /
+		<= Mol $demo_mol
