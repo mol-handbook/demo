@@ -25,3 +25,11 @@ $demo_mol_button $demo_scenes
 				file_name \$mol-handbook.jpeg
 		<= Open_scene $demo_scene
 			scene <= Open $mol_button_open
+		<= Share_link_scene $demo_scene
+			scene <= Share_link $mol_button_share
+				title \Поделиться хендбуком
+				uri \https://page.hyoo.ru/#!=egnum3_mpctj5
+				capture null
+		<= Share_screenshot_scene $demo_scene
+			scene <= Share_screenshot $mol_button_share
+				title \Поделиться скриншотом страницы
