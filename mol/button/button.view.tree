@@ -18,3 +18,8 @@ $demo_mol_button $demo_scenes
 			scene <= Copy $mol_button_copy
 				title \Скопировать "$mol"
 				text \$mol
+		<= Download_scene $demo_scene
+			scene <= Download $mol_button_download
+				title \Скачать изображение $mol-хендбука
+				blob <= image_blob $mol_blob
+				file_name \$mol-handbook.jpeg
