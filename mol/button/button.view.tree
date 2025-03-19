@@ -14,6 +14,15 @@ $demo_mol_button $demo_scenes
 		<= Minor_scene $demo_scene
 			scene <= Minor $mol_button_minor
 				title \Нажми на меня
+		<= With_icon_scene $demo_scene
+			scene <= With_icon $mol_button_major
+				sub /
+					<= Left_icon_plus $mol_icon_plus
+					<= title
+		<= Only_icon_scene $demo_scene
+			scene <= Only_icon $mol_button_major
+				sub /
+					<= Icon_plus $mol_icon_plus
 		<= Copy_scene $demo_scene
 			scene <= Copy $mol_button_copy
 				title \Скопировать "$mol"
