@@ -1635,6 +1635,222 @@ declare namespace $ {
 
 //# sourceMappingURL=download.view.tree.d.ts.map
 declare namespace $ {
+
+	export class $mol_icon_upload extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=upload.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_button_open_native__files_mol_button_open_1 = $mol_type_enforce<
+		ReturnType< $mol_button_open['files'] >
+		,
+		ReturnType< $mol_button_open_native['files'] >
+	>
+	type $mol_button_open_native__accept_mol_button_open_2 = $mol_type_enforce<
+		ReturnType< $mol_button_open['accept'] >
+		,
+		ReturnType< $mol_button_open_native['accept'] >
+	>
+	type $mol_button_open_native__multiple_mol_button_open_3 = $mol_type_enforce<
+		ReturnType< $mol_button_open['multiple'] >
+		,
+		ReturnType< $mol_button_open_native['multiple'] >
+	>
+	export class $mol_button_open extends $mol_button_minor {
+		Icon( ): $mol_icon_upload
+		files( next?: readonly(any)[] ): readonly(any)[]
+		accept( ): string
+		multiple( ): boolean
+		Native( ): $mol_button_open_native
+		sub( ): readonly(any)[]
+	}
+	
+	export class $mol_button_open_native extends $mol_view {
+		accept( ): string
+		multiple( ): boolean
+		picked( next?: any ): any
+		dom_name( ): string
+		files( next?: readonly(any)[] ): readonly(any)[]
+		attr( ): ({ 
+			'type': string,
+			'accept': ReturnType< $mol_button_open_native['accept'] >,
+			'multiple': ReturnType< $mol_button_open_native['multiple'] >,
+		}) 
+		event( ): ({ 
+			change( next?: ReturnType< $mol_button_open_native['picked'] > ): ReturnType< $mol_button_open_native['picked'] >,
+		}) 
+	}
+	
+}
+
+//# sourceMappingURL=open.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_button_open_native extends $.$mol_button_open_native {
+        dom_node(): HTMLInputElement;
+        picked(): void;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_icon_share extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=share.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_share_variant extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=variant.view.tree.d.ts.map
+declare namespace $ {
+    class $mol_lock extends $mol_object {
+        protected promise: null | Promise<void>;
+        wait(): Promise<() => void>;
+        grab(): () => void;
+    }
+}
+
+declare namespace $ {
+    function $mol_compare_array<Value extends ArrayLike<unknown>>(a: Value, b: Value): boolean;
+}
+
+declare namespace $ {
+    type $mol_charset_encoding = 'utf8' | 'utf-16le' | 'utf-16be' | 'ibm866' | 'iso-8859-2' | 'iso-8859-3' | 'iso-8859-4' | 'iso-8859-5' | 'iso-8859-6' | 'iso-8859-7' | 'iso-8859-8' | 'iso-8859-8i' | 'iso-8859-10' | 'iso-8859-13' | 'iso-8859-14' | 'iso-8859-15' | 'iso-8859-16' | 'koi8-r' | 'koi8-u' | 'koi8-r' | 'macintosh' | 'windows-874' | 'windows-1250' | 'windows-1251' | 'windows-1252' | 'windows-1253' | 'windows-1254' | 'windows-1255' | 'windows-1256' | 'windows-1257' | 'windows-1258' | 'x-mac-cyrillic' | 'gbk' | 'gb18030' | 'hz-gb-2312' | 'big5' | 'euc-jp' | 'iso-2022-jp' | 'shift-jis' | 'euc-kr' | 'iso-2022-kr';
+}
+
+declare namespace $ {
+    function $mol_charset_decode(buffer: BufferSource, encoding?: $mol_charset_encoding): string;
+}
+
+declare namespace $ {
+    function $mol_charset_encode(value: string): Uint8Array<ArrayBuffer>;
+}
+
+declare namespace $ {
+    type $mol_file_transaction_mode = 'create' | 'exists_truncate' | 'exists_fail' | 'read_only' | 'write_only' | 'read_write' | 'append';
+    type $mol_file_transaction_buffer = ArrayBufferView;
+    class $mol_file_transaction extends $mol_object {
+        path(): string;
+        modes(): readonly $mol_file_transaction_mode[];
+        write(options: {
+            buffer: ArrayBufferView | string | readonly ArrayBufferView[];
+            offset?: number | null;
+            length?: number | null;
+            position?: number | null;
+        }): number;
+        read(): Uint8Array<ArrayBuffer>;
+        truncate(size: number): void;
+        close(): void;
+        destructor(): void;
+    }
+}
+
+declare namespace $ {
+    class $mol_file_transaction_web extends $mol_file_transaction {
+        write(options: {
+            buffer: ArrayBufferView | string | readonly ArrayBufferView[];
+            offset?: number | null;
+            length?: number | null;
+            position?: number | null;
+        }): number;
+        truncate(size: number): void;
+        read(): Buffer<ArrayBuffer>;
+        close(): void;
+    }
+}
+
+declare namespace $ {
+    class $mol_file_base extends $mol_object {
+        static absolute<This extends typeof $mol_file_base>(this: This, path: string): InstanceType<This>;
+        static relative<This extends typeof $mol_file_base>(this: This, path: string): InstanceType<This>;
+        static base: string;
+        path(): string;
+        parent(): this;
+        exists_cut(): boolean;
+        protected root(): boolean;
+        protected stat(next?: $mol_file_stat | null, virt?: 'virt'): $mol_file_stat | null;
+        protected static changed: Set<$mol_file_base>;
+        protected static frame: null | $mol_after_timeout;
+        protected static changed_add(type: 'change' | 'rename', path: string): void;
+        static watch_debounce(): number;
+        static flush(): void;
+        protected static watching: boolean;
+        protected static lock: $mol_lock;
+        protected static watch_off(path: string): void;
+        static unwatched<Result>(side_effect: () => Result, affected_dir: string): Result;
+        reset(): void;
+        modified(): Date | null;
+        version(): string;
+        protected info(path: string): null | $mol_file_stat;
+        protected ensure(): void;
+        protected drop(): void;
+        protected copy(to: string): void;
+        protected read(): Uint8Array<ArrayBuffer>;
+        protected write(buffer: Uint8Array<ArrayBuffer>): void;
+        protected kids(): readonly this[];
+        readable(opts: {
+            start?: number;
+            end?: number;
+        }): ReadableStream<Uint8Array<ArrayBuffer>>;
+        writable(opts: {
+            start?: number;
+        }): WritableStream<Uint8Array<ArrayBuffer>>;
+        buffer(next?: Uint8Array<ArrayBuffer>): Uint8Array<ArrayBuffer>;
+        stat_make(size: number): {
+            readonly type: "file";
+            readonly size: number;
+            readonly atime: Date;
+            readonly mtime: Date;
+            readonly ctime: Date;
+        };
+        clone(to: string): this | null;
+        watcher(): {
+            destructor(): void;
+        };
+        exists(next?: boolean): boolean;
+        type(): "" | $mol_file_type;
+        name(): string;
+        ext(): string;
+        text(next?: string, virt?: 'virt'): string;
+        text_int(next?: string, virt?: 'virt'): string;
+        sub(reset?: null): this[];
+        resolve(path: string): this;
+        relate(base?: $mol_file_base): string;
+        find(include?: RegExp, exclude?: RegExp): this[];
+        size(): number;
+        toJSON(): string;
+        open(...modes: readonly $mol_file_transaction_mode[]): $mol_file_transaction;
+    }
+}
+
+declare namespace $ {
+    type $mol_file_type = 'file' | 'dir' | 'link';
+    interface $mol_file_stat {
+        type: $mol_file_type;
+        size: number;
+        atime: Date;
+        mtime: Date;
+        ctime: Date;
+    }
+    class $mol_file extends $mol_file_base {
+    }
+}
+
+declare namespace $ {
     function $mol_dom_parse(text: string, type?: DOMParserSupportedType): Document;
 }
 
@@ -1670,6 +1886,81 @@ declare namespace $ {
         static xml(input: RequestInfo, init?: RequestInit): Document;
         static xhtml(input: RequestInfo, init?: RequestInit): Document;
         static html(input: RequestInfo, init?: RequestInit): Document;
+    }
+}
+
+declare namespace $ {
+    class $mol_file_webdav extends $mol_file_base {
+        static relative<This extends typeof $mol_file>(this: This, path: string): InstanceType<This>;
+        resolve(path: string): this;
+        static headers(): Record<string, string>;
+        headers(): Record<string, string>;
+        protected fetch(init: RequestInit): $mol_fetch_response;
+        protected read(): Uint8Array<ArrayBuffer>;
+        protected write(body: Uint8Array<ArrayBuffer>): void;
+        protected ensure(): void;
+        protected drop(): void;
+        protected copy(to: string): void;
+        protected kids(): this[];
+        readable(opts: {
+            start?: number;
+            end?: number;
+        }): ReadableStream<Uint8Array<ArrayBuffer>>;
+        protected info(): $mol_file_stat | null;
+    }
+}
+
+declare namespace $ {
+    class $mol_file_web extends $mol_file_webdav {
+        static base: string;
+        version(): string;
+        protected info(): $mol_file_stat | null;
+    }
+}
+
+declare namespace $ {
+    interface $mol_locale_dict {
+        [key: string]: string;
+    }
+    class $mol_locale extends $mol_object {
+        static lang_default(): string;
+        static lang(next?: string): string;
+        static source(lang: string): any;
+        static texts(lang: string, next?: $mol_locale_dict): $mol_locale_dict;
+        static text(key: string): string;
+        static warn(key: string): null;
+    }
+}
+
+declare namespace $ {
+    function $mol_dom_serialize(node: Node): string;
+}
+
+declare namespace $ {
+    function $mol_dom_capture_svg(el: Element): Promise<$mol_jsx.JSX.Element>;
+    function $mol_dom_capture_image(el: Element): Promise<HTMLImageElement>;
+    function $mol_dom_capture_canvas(el: Element): Promise<HTMLCanvasElement>;
+}
+
+declare namespace $ {
+
+	export class $mol_button_share extends $mol_button_minor {
+		Icon( ): $mol_icon_share_variant
+		title( ): string
+		uri( ): string
+		capture( ): any
+		hint( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=share.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_button_share extends $.$mol_button_share {
+        capture(): any;
+        uri(): string;
+        click(): Promise<void>;
     }
 }
 
@@ -1760,6 +2051,41 @@ declare namespace $ {
 		,
 		ReturnType< $demo_scene['scene'] >
 	>
+	type $demo_scene__scene_demo_mol_button_18 = $mol_type_enforce<
+		ReturnType< $demo_mol_button['Open'] >
+		,
+		ReturnType< $demo_scene['scene'] >
+	>
+	type $mol_button_share__title_demo_mol_button_19 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_share['title'] >
+	>
+	type $mol_button_share__uri_demo_mol_button_20 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_share['uri'] >
+	>
+	type $mol_button_share__capture_demo_mol_button_21 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $mol_button_share['capture'] >
+	>
+	type $demo_scene__scene_demo_mol_button_22 = $mol_type_enforce<
+		ReturnType< $demo_mol_button['Share_link'] >
+		,
+		ReturnType< $demo_scene['scene'] >
+	>
+	type $mol_button_share__title_demo_mol_button_23 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_share['title'] >
+	>
+	type $demo_scene__scene_demo_mol_button_24 = $mol_type_enforce<
+		ReturnType< $demo_mol_button['Share_screenshot'] >
+		,
+		ReturnType< $demo_scene['scene'] >
+	>
 	export class $demo_mol_button extends $demo_scenes {
 		Major( ): $mol_button_major
 		Major_scene( ): $demo_scene
@@ -1775,6 +2101,12 @@ declare namespace $ {
 		image_blob( ): $mol_blob
 		Download( ): $mol_button_download
 		Download_scene( ): $demo_scene
+		Open( ): $mol_button_open
+		Open_scene( ): $demo_scene
+		Share_link( ): $mol_button_share
+		Share_link_scene( ): $demo_scene
+		Share_screenshot( ): $mol_button_share
+		Share_screenshot_scene( ): $demo_scene
 		scenes( ): readonly(any)[]
 	}
 	

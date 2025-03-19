@@ -1947,6 +1947,134 @@ declare namespace $ {
 
 //# sourceMappingURL=download.view.tree.d.ts.map
 declare namespace $ {
+
+	export class $mol_icon_upload extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=upload.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_button_open_native__files_mol_button_open_1 = $mol_type_enforce<
+		ReturnType< $mol_button_open['files'] >
+		,
+		ReturnType< $mol_button_open_native['files'] >
+	>
+	type $mol_button_open_native__accept_mol_button_open_2 = $mol_type_enforce<
+		ReturnType< $mol_button_open['accept'] >
+		,
+		ReturnType< $mol_button_open_native['accept'] >
+	>
+	type $mol_button_open_native__multiple_mol_button_open_3 = $mol_type_enforce<
+		ReturnType< $mol_button_open['multiple'] >
+		,
+		ReturnType< $mol_button_open_native['multiple'] >
+	>
+	export class $mol_button_open extends $mol_button_minor {
+		Icon( ): $mol_icon_upload
+		files( next?: readonly(any)[] ): readonly(any)[]
+		accept( ): string
+		multiple( ): boolean
+		Native( ): $mol_button_open_native
+		sub( ): readonly(any)[]
+	}
+	
+	export class $mol_button_open_native extends $mol_view {
+		accept( ): string
+		multiple( ): boolean
+		picked( next?: any ): any
+		dom_name( ): string
+		files( next?: readonly(any)[] ): readonly(any)[]
+		attr( ): ({ 
+			'type': string,
+			'accept': ReturnType< $mol_button_open_native['accept'] >,
+			'multiple': ReturnType< $mol_button_open_native['multiple'] >,
+		}) 
+		event( ): ({ 
+			change( next?: ReturnType< $mol_button_open_native['picked'] > ): ReturnType< $mol_button_open_native['picked'] >,
+		}) 
+	}
+	
+}
+
+//# sourceMappingURL=open.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_button_open_native extends $.$mol_button_open_native {
+        dom_node(): HTMLInputElement;
+        picked(): void;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_icon_share extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=share.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_share_variant extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=variant.view.tree.d.ts.map
+declare namespace $ {
+    interface $mol_locale_dict {
+        [key: string]: string;
+    }
+    class $mol_locale extends $mol_object {
+        static lang_default(): string;
+        static lang(next?: string): string;
+        static source(lang: string): any;
+        static texts(lang: string, next?: $mol_locale_dict): $mol_locale_dict;
+        static text(key: string): string;
+        static warn(key: string): null;
+    }
+}
+
+declare namespace $ {
+    function $mol_dom_serialize(node: Node): string;
+}
+
+declare namespace $ {
+    function $mol_dom_capture_svg(el: Element): Promise<$mol_jsx.JSX.Element>;
+    function $mol_dom_capture_image(el: Element): Promise<HTMLImageElement>;
+    function $mol_dom_capture_canvas(el: Element): Promise<HTMLCanvasElement>;
+}
+
+declare namespace $ {
+
+	export class $mol_button_share extends $mol_button_minor {
+		Icon( ): $mol_icon_share_variant
+		title( ): string
+		uri( ): string
+		capture( ): any
+		hint( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=share.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_button_share extends $.$mol_button_share {
+        capture(): any;
+        uri(): string;
+        click(): Promise<void>;
+    }
+}
+
+declare namespace $ {
     function $mol_dom_parse(text: string, type?: DOMParserSupportedType): Document;
 }
 
@@ -2072,6 +2200,41 @@ declare namespace $ {
 		,
 		ReturnType< $demo_scene['scene'] >
 	>
+	type $demo_scene__scene_demo_mol_button_18 = $mol_type_enforce<
+		ReturnType< $demo_mol_button['Open'] >
+		,
+		ReturnType< $demo_scene['scene'] >
+	>
+	type $mol_button_share__title_demo_mol_button_19 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_share['title'] >
+	>
+	type $mol_button_share__uri_demo_mol_button_20 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_share['uri'] >
+	>
+	type $mol_button_share__capture_demo_mol_button_21 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $mol_button_share['capture'] >
+	>
+	type $demo_scene__scene_demo_mol_button_22 = $mol_type_enforce<
+		ReturnType< $demo_mol_button['Share_link'] >
+		,
+		ReturnType< $demo_scene['scene'] >
+	>
+	type $mol_button_share__title_demo_mol_button_23 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_share['title'] >
+	>
+	type $demo_scene__scene_demo_mol_button_24 = $mol_type_enforce<
+		ReturnType< $demo_mol_button['Share_screenshot'] >
+		,
+		ReturnType< $demo_scene['scene'] >
+	>
 	export class $demo_mol_button extends $demo_scenes {
 		Major( ): $mol_button_major
 		Major_scene( ): $demo_scene
@@ -2087,6 +2250,12 @@ declare namespace $ {
 		image_blob( ): $mol_blob
 		Download( ): $mol_button_download
 		Download_scene( ): $demo_scene
+		Open( ): $mol_button_open
+		Open_scene( ): $demo_scene
+		Share_link( ): $mol_button_share
+		Share_link_scene( ): $demo_scene
+		Share_screenshot( ): $mol_button_share
+		Share_screenshot_scene( ): $demo_scene
 		scenes( ): readonly(any)[]
 	}
 	

@@ -5800,6 +5800,355 @@ var $;
 "use strict";
 
 ;
+	($.$mol_icon_upload) = class $mol_icon_upload extends ($.$mol_icon) {
+		path(){
+			return "M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_button_open) = class $mol_button_open extends ($.$mol_button_minor) {
+		Icon(){
+			const obj = new this.$.$mol_icon_upload();
+			return obj;
+		}
+		files(next){
+			if(next !== undefined) return next;
+			return [];
+		}
+		accept(){
+			return "";
+		}
+		multiple(){
+			return true;
+		}
+		Native(){
+			const obj = new this.$.$mol_button_open_native();
+			(obj.files) = (next) => ((this.files(next)));
+			(obj.accept) = () => ((this.accept()));
+			(obj.multiple) = () => ((this.multiple()));
+			return obj;
+		}
+		sub(){
+			return [(this.Icon()), (this.Native())];
+		}
+	};
+	($mol_mem(($.$mol_button_open.prototype), "Icon"));
+	($mol_mem(($.$mol_button_open.prototype), "files"));
+	($mol_mem(($.$mol_button_open.prototype), "Native"));
+	($.$mol_button_open_native) = class $mol_button_open_native extends ($.$mol_view) {
+		accept(){
+			return "";
+		}
+		multiple(){
+			return true;
+		}
+		picked(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		dom_name(){
+			return "input";
+		}
+		files(next){
+			if(next !== undefined) return next;
+			return [];
+		}
+		attr(){
+			return {
+				"type": "file", 
+				"accept": (this.accept()), 
+				"multiple": (this.multiple())
+			};
+		}
+		event(){
+			return {"change": (next) => (this.picked(next))};
+		}
+	};
+	($mol_mem(($.$mol_button_open_native.prototype), "picked"));
+	($mol_mem(($.$mol_button_open_native.prototype), "files"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_button_open_native extends $.$mol_button_open_native {
+            dom_node() {
+                return super.dom_node();
+            }
+            picked() {
+                const files = this.dom_node().files;
+                if (!files || !files.length)
+                    return;
+                this.files([...files]);
+            }
+        }
+        $$.$mol_button_open_native = $mol_button_open_native;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/button/open/open.view.css", "[mol_button_open_native] {\n\tposition: absolute;\n\tleft: 0;\n\ttop: -100%;\n\twidth: 100%;\n\theight: 200%;\n\tcursor: pointer;\n\topacity: 0;\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_share) = class $mol_icon_share extends ($.$mol_icon) {
+		path(){
+			return "M21,12L14,5V9C7,10 4,15 3,20C5.5,16.5 9,14.9 14,14.9V19L21,12Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_share_variant) = class $mol_icon_share_variant extends ($.$mol_icon) {
+		path(){
+			return "M18,16.08C17.24,16.08 16.56,16.38 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_locale extends $mol_object {
+        static lang_default() {
+            return 'en';
+        }
+        static lang(next) {
+            return this.$.$mol_state_local.value('locale', next) || $mol_dom_context.navigator.language.replace(/-.*/, '') || this.lang_default();
+        }
+        static source(lang) {
+            return JSON.parse(this.$.$mol_file.relative(`web.locale=${lang}.json`).text().toString());
+        }
+        static texts(lang, next) {
+            if (next)
+                return next;
+            try {
+                return this.source(lang).valueOf();
+            }
+            catch (error) {
+                if ($mol_fail_catch(error)) {
+                    const def = this.lang_default();
+                    if (lang === def)
+                        throw error;
+                }
+            }
+            return {};
+        }
+        static text(key) {
+            const lang = this.lang();
+            const target = this.texts(lang)[key];
+            if (target)
+                return target;
+            this.warn(key);
+            const en = this.texts('en')[key];
+            if (!en)
+                return key;
+            return en;
+        }
+        static warn(key) {
+            console.warn(`Not translated to "${this.lang()}": ${key}`);
+            return null;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $mol_locale, "lang_default", null);
+    __decorate([
+        $mol_mem
+    ], $mol_locale, "lang", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "source", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "texts", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "text", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_locale, "warn", null);
+    $.$mol_locale = $mol_locale;
+})($ || ($ = {}));
+
+;
+	($.$mol_button_share) = class $mol_button_share extends ($.$mol_button_minor) {
+		Icon(){
+			const obj = new this.$.$mol_icon_share_variant();
+			return obj;
+		}
+		title(){
+			return "";
+		}
+		uri(){
+			return "";
+		}
+		capture(){
+			return null;
+		}
+		hint(){
+			return (this.$.$mol_locale.text("$mol_button_share_hint"));
+		}
+		sub(){
+			return [(this.Icon()), (this.title())];
+		}
+	};
+	($mol_mem(($.$mol_button_share.prototype), "Icon"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_dom_serialize(node) {
+        const serializer = new $mol_dom_context.XMLSerializer;
+        return serializer.serializeToString(node);
+    }
+    $.$mol_dom_serialize = $mol_dom_serialize;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    async function $mol_dom_capture_svg(el) {
+        function restyle(el, styles) {
+            for (let i = 0; i < styles.length; ++i) {
+                const prop = styles[i];
+                el.style[prop] = styles[prop];
+            }
+        }
+        function clone(el) {
+            const re = el.cloneNode();
+            if (el instanceof HTMLImageElement && !/^(data|blob):/.test(el.src)) {
+                const canvas = $mol_jsx("canvas", { width: el.naturalWidth, height: el.naturalHeight });
+                const context = canvas.getContext('2d');
+                context.drawImage(el, 0, 0);
+                try {
+                    ;
+                    re.src = canvas.toDataURL();
+                }
+                catch (error) {
+                    $mol_fail_log(error);
+                }
+            }
+            if (re instanceof HTMLInputElement) {
+                re.setAttribute('value', el.value);
+                if (el.checked)
+                    re.setAttribute('checked', '');
+            }
+            if (re instanceof HTMLTextAreaElement) {
+                re.setAttribute('value', el.value);
+            }
+            const styles = $mol_dom_context.getComputedStyle(el);
+            restyle(re, styles);
+            const before = $mol_dom_context.getComputedStyle(el, ':before');
+            if (before.content[0] === '"') {
+                const kid = $mol_jsx("span", null, JSON.parse(before.content));
+                restyle(kid, before);
+                re.appendChild(kid);
+            }
+            for (const kid of el.childNodes) {
+                const dup = (kid.nodeType === kid.ELEMENT_NODE)
+                    ? clone(kid)
+                    : kid.cloneNode();
+                re.appendChild(dup);
+            }
+            const after = $mol_dom_context.getComputedStyle(el, ':after');
+            if (after.content[0] === '"') {
+                const kid = $mol_jsx("span", null, JSON.parse(after.content));
+                restyle(kid, after);
+                re.appendChild(kid);
+            }
+            return re;
+        }
+        const { width, height } = el.getBoundingClientRect();
+        return $mol_jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: `0 0 ${width} ${height}`, width: String(width), height: String(height) },
+            $mol_jsx("foreignObject", { xmlns: "http://www.w3.org/2000/svg", width: String(width), height: String(height) }, clone(el)));
+    }
+    $.$mol_dom_capture_svg = $mol_dom_capture_svg;
+    async function $mol_dom_capture_image(el) {
+        const xml = $mol_dom_serialize(await $mol_dom_capture_svg(el));
+        const uri = 'data:image/svg+xml,' + encodeURIComponent(xml);
+        const image = $mol_jsx("img", { src: uri });
+        await wait_load(image);
+        return image;
+    }
+    $.$mol_dom_capture_image = $mol_dom_capture_image;
+    async function $mol_dom_capture_canvas(el) {
+        const image = await $mol_dom_capture_image(el);
+        const canvas = $mol_jsx("canvas", { width: image.width, height: image.height });
+        const context = canvas.getContext('2d');
+        context.drawImage(image, 0, 0);
+        return canvas;
+    }
+    $.$mol_dom_capture_canvas = $mol_dom_capture_canvas;
+    function wait_load(el) {
+        return new Promise((done, fail) => {
+            el.onload = () => done(el);
+            el.onerror = fail;
+        });
+    }
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_button_share extends $.$mol_button_share {
+            capture() {
+                return this.$.$mol_dom_context.document.body;
+            }
+            uri() {
+                return this.$.$mol_state_arg.href();
+            }
+            async click() {
+                const title = this.title();
+                const url = this.uri() ?? undefined;
+                const files = [];
+                let el = this.capture();
+                if (el) {
+                    if (el instanceof $mol_view)
+                        el = el.dom_tree();
+                    const canvas = await $mol_dom_capture_canvas(el);
+                    const blob = await new Promise(done => canvas.toBlob(done));
+                    const file = new File([blob], title + '.png', { type: blob.type });
+                    files.push(file);
+                }
+                await this.$.$mol_dom_context.navigator.share({ title, files, url });
+            }
+        }
+        $$.$mol_button_share = $mol_button_share;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$demo_mol_button) = class $demo_mol_button extends ($.$demo_scenes) {
 		Major(){
 			const obj = new this.$.$mol_button_major();
@@ -5874,6 +6223,37 @@ var $;
 			(obj.scene) = () => ((this.Download()));
 			return obj;
 		}
+		Open(){
+			const obj = new this.$.$mol_button_open();
+			return obj;
+		}
+		Open_scene(){
+			const obj = new this.$.$demo_scene();
+			(obj.scene) = () => ((this.Open()));
+			return obj;
+		}
+		Share_link(){
+			const obj = new this.$.$mol_button_share();
+			(obj.title) = () => ("Поделиться хендбуком");
+			(obj.uri) = () => ("https://page.hyoo.ru/#!=egnum3_mpctj5");
+			(obj.capture) = () => (null);
+			return obj;
+		}
+		Share_link_scene(){
+			const obj = new this.$.$demo_scene();
+			(obj.scene) = () => ((this.Share_link()));
+			return obj;
+		}
+		Share_screenshot(){
+			const obj = new this.$.$mol_button_share();
+			(obj.title) = () => ("Поделиться скриншотом страницы");
+			return obj;
+		}
+		Share_screenshot_scene(){
+			const obj = new this.$.$demo_scene();
+			(obj.scene) = () => ((this.Share_screenshot()));
+			return obj;
+		}
 		scenes(){
 			return [
 				(this.Major_scene()), 
@@ -5881,7 +6261,10 @@ var $;
 				(this.Major_click_scene()), 
 				(this.Minor_scene()), 
 				(this.Copy_scene()), 
-				(this.Download_scene())
+				(this.Download_scene()), 
+				(this.Open_scene()), 
+				(this.Share_link_scene()), 
+				(this.Share_screenshot_scene())
 			];
 		}
 	};
@@ -5899,6 +6282,12 @@ var $;
 	($mol_mem(($.$demo_mol_button.prototype), "image_blob"));
 	($mol_mem(($.$demo_mol_button.prototype), "Download"));
 	($mol_mem(($.$demo_mol_button.prototype), "Download_scene"));
+	($mol_mem(($.$demo_mol_button.prototype), "Open"));
+	($mol_mem(($.$demo_mol_button.prototype), "Open_scene"));
+	($mol_mem(($.$demo_mol_button.prototype), "Share_link"));
+	($mol_mem(($.$demo_mol_button.prototype), "Share_link_scene"));
+	($mol_mem(($.$demo_mol_button.prototype), "Share_screenshot"));
+	($mol_mem(($.$demo_mol_button.prototype), "Share_screenshot_scene"));
 
 
 ;
@@ -7160,17 +7549,6 @@ var $;
 
 ;
 "use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_dom_serialize(node) {
-        const serializer = new $mol_dom_context.XMLSerializer;
-        return serializer.serializeToString(node);
-    }
-    $.$mol_dom_serialize = $mol_dom_serialize;
-})($ || ($ = {}));
 
 ;
 "use strict";
@@ -9114,6 +9492,27 @@ var $;
             },
         });
     })($$ = $_1.$$ || ($_1.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($_1) {
+    $mol_test_mocks.push($ => {
+        class $mol_locale_mock extends $mol_locale {
+            lang(next = 'en') { return next; }
+            static source(lang) {
+                return {};
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_locale_mock.prototype, "lang", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_locale_mock, "source", null);
+        $.$mol_locale = $mol_locale_mock;
+    });
 })($ || ($ = {}));
 
 
