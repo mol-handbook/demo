@@ -23,3 +23,5 @@ $demo_mol_button $demo_scenes
 				title \Скачать изображение $mol-хендбука
 				blob <= image_blob $mol_blob
 				file_name \$mol-handbook.jpeg
+		<= Open_scene $demo_scene
+			scene <= Open $mol_button_open
