@@ -11,3 +11,6 @@ $demo_mol_button $demo_scenes
 			scene <= Major_click $mol_button_major
 				click? <=> click_action? null
 				title \Нажми на меня
+		<= Minor_scene $demo_scene
+			scene <= Minor $mol_button_minor
+				title \Нажми на меня
