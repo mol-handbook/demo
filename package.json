@@ -151,7 +151,25 @@
     "$mol_keyboard",
     "$mol_button_minor",
     "$mol_button_typed",
-    "$demo_scene"
+    "$demo_scene",
+    "$mol_button_copy",
+    "$mol_blob",
+    "$mol_icon_clipboard_outline",
+    "$mol_icon_clipboard",
+    "$mol_icon",
+    "$mol_svg_root",
+    "$mol_svg",
+    "$mol_state_time",
+    "$mol_svg_path",
+    "$mol_html_encode",
+    "$mol_html",
+    "$mol_button_download",
+    "$mol_jsx",
+    "$mol_type_partial_deep",
+    "$mol_type_partial",
+    "$mol_icon_download",
+    "$mol_fetch",
+    "$mol_dom_parse"
   ],
   "dependencies": {
     "jsdom": "*"
