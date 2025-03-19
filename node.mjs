@@ -5333,13 +5333,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-"use strict";
-var $;
-(function ($) {
-    $.$mol_blob = ($node.buffer?.Blob ?? $mol_dom_context.Blob);
-})($ || ($ = {}));
-
-;
 	($.$mol_svg) = class $mol_svg extends ($.$mol_view) {
 		dom_name(){
 			return "svg";
@@ -5506,6 +5499,24 @@ var $;
 
 ;
 "use strict";
+
+;
+	($.$mol_icon_plus) = class $mol_icon_plus extends ($.$mol_icon) {
+		path(){
+			return "M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    $.$mol_blob = ($node.buffer?.Blob ?? $mol_dom_context.Blob);
+})($ || ($ = {}));
 
 ;
 	($.$mol_icon_clipboard) = class $mol_icon_clipboard extends ($.$mol_icon) {
@@ -6205,6 +6216,34 @@ var $;
 			(obj.scene) = () => ((this.Minor()));
 			return obj;
 		}
+		Left_icon_plus(){
+			const obj = new this.$.$mol_icon_plus();
+			return obj;
+		}
+		With_icon(){
+			const obj = new this.$.$mol_button_major();
+			(obj.sub) = () => ([(this.Left_icon_plus()), (this.title())]);
+			return obj;
+		}
+		With_icon_scene(){
+			const obj = new this.$.$demo_scene();
+			(obj.scene) = () => ((this.With_icon()));
+			return obj;
+		}
+		Icon_plus(){
+			const obj = new this.$.$mol_icon_plus();
+			return obj;
+		}
+		Only_icon(){
+			const obj = new this.$.$mol_button_major();
+			(obj.sub) = () => ([(this.Icon_plus())]);
+			return obj;
+		}
+		Only_icon_scene(){
+			const obj = new this.$.$demo_scene();
+			(obj.scene) = () => ((this.Only_icon()));
+			return obj;
+		}
 		Copy(){
 			const obj = new this.$.$mol_button_copy();
 			(obj.title) = () => ("Скопировать \"$mol\"");
@@ -6269,6 +6308,8 @@ var $;
 				(this.Major_disabled_scene()), 
 				(this.Major_click_scene()), 
 				(this.Minor_scene()), 
+				(this.With_icon_scene()), 
+				(this.Only_icon_scene()), 
 				(this.Copy_scene()), 
 				(this.Download_scene()), 
 				(this.Open_scene()), 
@@ -6286,6 +6327,12 @@ var $;
 	($mol_mem(($.$demo_mol_button.prototype), "Major_click_scene"));
 	($mol_mem(($.$demo_mol_button.prototype), "Minor"));
 	($mol_mem(($.$demo_mol_button.prototype), "Minor_scene"));
+	($mol_mem(($.$demo_mol_button.prototype), "Left_icon_plus"));
+	($mol_mem(($.$demo_mol_button.prototype), "With_icon"));
+	($mol_mem(($.$demo_mol_button.prototype), "With_icon_scene"));
+	($mol_mem(($.$demo_mol_button.prototype), "Icon_plus"));
+	($mol_mem(($.$demo_mol_button.prototype), "Only_icon"));
+	($mol_mem(($.$demo_mol_button.prototype), "Only_icon_scene"));
 	($mol_mem(($.$demo_mol_button.prototype), "Copy"));
 	($mol_mem(($.$demo_mol_button.prototype), "Copy_scene"));
 	($mol_mem(($.$demo_mol_button.prototype), "image_blob"));

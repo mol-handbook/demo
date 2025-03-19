@@ -1723,14 +1723,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    type $mol_blob = Blob;
-    let $mol_blob: {
-        prototype: Blob;
-        new (blobParts?: readonly BlobPart[], options?: BlobPropertyBag): Blob;
-    };
-}
-
-declare namespace $ {
     class $mol_state_time extends $mol_object {
         static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
         static now(precision: number): number;
@@ -1811,6 +1803,23 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_plus extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=plus.view.tree.d.ts.map
+declare namespace $ {
+    type $mol_blob = Blob;
+    let $mol_blob: {
+        prototype: Blob;
+        new (blobParts?: readonly BlobPart[], options?: BlobPropertyBag): Blob;
+    };
+}
+
 declare namespace $ {
 
 	export class $mol_icon_clipboard extends $mol_icon {
@@ -2165,63 +2174,63 @@ declare namespace $ {
 		,
 		ReturnType< $demo_scene['scene'] >
 	>
-	type $mol_button_copy__title_demo_mol_button_11 = $mol_type_enforce<
+	type $mol_button_major__sub_demo_mol_button_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_major['sub'] >
+	>
+	type $demo_scene__scene_demo_mol_button_12 = $mol_type_enforce<
+		ReturnType< $demo_mol_button['With_icon'] >
+		,
+		ReturnType< $demo_scene['scene'] >
+	>
+	type $mol_button_major__sub_demo_mol_button_13 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_major['sub'] >
+	>
+	type $demo_scene__scene_demo_mol_button_14 = $mol_type_enforce<
+		ReturnType< $demo_mol_button['Only_icon'] >
+		,
+		ReturnType< $demo_scene['scene'] >
+	>
+	type $mol_button_copy__title_demo_mol_button_15 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_copy['title'] >
 	>
-	type $mol_button_copy__text_demo_mol_button_12 = $mol_type_enforce<
+	type $mol_button_copy__text_demo_mol_button_16 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_copy['text'] >
 	>
-	type $demo_scene__scene_demo_mol_button_13 = $mol_type_enforce<
+	type $demo_scene__scene_demo_mol_button_17 = $mol_type_enforce<
 		ReturnType< $demo_mol_button['Copy'] >
 		,
 		ReturnType< $demo_scene['scene'] >
 	>
-	type $mol_button_download__title_demo_mol_button_14 = $mol_type_enforce<
+	type $mol_button_download__title_demo_mol_button_18 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_download['title'] >
 	>
-	type $mol_button_download__blob_demo_mol_button_15 = $mol_type_enforce<
+	type $mol_button_download__blob_demo_mol_button_19 = $mol_type_enforce<
 		ReturnType< $demo_mol_button['image_blob'] >
 		,
 		ReturnType< $mol_button_download['blob'] >
 	>
-	type $mol_button_download__file_name_demo_mol_button_16 = $mol_type_enforce<
+	type $mol_button_download__file_name_demo_mol_button_20 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_download['file_name'] >
 	>
-	type $demo_scene__scene_demo_mol_button_17 = $mol_type_enforce<
+	type $demo_scene__scene_demo_mol_button_21 = $mol_type_enforce<
 		ReturnType< $demo_mol_button['Download'] >
 		,
 		ReturnType< $demo_scene['scene'] >
 	>
-	type $demo_scene__scene_demo_mol_button_18 = $mol_type_enforce<
-		ReturnType< $demo_mol_button['Open'] >
-		,
-		ReturnType< $demo_scene['scene'] >
-	>
-	type $mol_button_share__title_demo_mol_button_19 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_button_share['title'] >
-	>
-	type $mol_button_share__uri_demo_mol_button_20 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_button_share['uri'] >
-	>
-	type $mol_button_share__capture_demo_mol_button_21 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $mol_button_share['capture'] >
-	>
 	type $demo_scene__scene_demo_mol_button_22 = $mol_type_enforce<
-		ReturnType< $demo_mol_button['Share_link'] >
+		ReturnType< $demo_mol_button['Open'] >
 		,
 		ReturnType< $demo_scene['scene'] >
 	>
@@ -2230,7 +2239,27 @@ declare namespace $ {
 		,
 		ReturnType< $mol_button_share['title'] >
 	>
-	type $demo_scene__scene_demo_mol_button_24 = $mol_type_enforce<
+	type $mol_button_share__uri_demo_mol_button_24 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_share['uri'] >
+	>
+	type $mol_button_share__capture_demo_mol_button_25 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $mol_button_share['capture'] >
+	>
+	type $demo_scene__scene_demo_mol_button_26 = $mol_type_enforce<
+		ReturnType< $demo_mol_button['Share_link'] >
+		,
+		ReturnType< $demo_scene['scene'] >
+	>
+	type $mol_button_share__title_demo_mol_button_27 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_share['title'] >
+	>
+	type $demo_scene__scene_demo_mol_button_28 = $mol_type_enforce<
 		ReturnType< $demo_mol_button['Share_screenshot'] >
 		,
 		ReturnType< $demo_scene['scene'] >
@@ -2245,6 +2274,12 @@ declare namespace $ {
 		Major_click_scene( ): $demo_scene
 		Minor( ): $mol_button_minor
 		Minor_scene( ): $demo_scene
+		Left_icon_plus( ): $mol_icon_plus
+		With_icon( ): $mol_button_major
+		With_icon_scene( ): $demo_scene
+		Icon_plus( ): $mol_icon_plus
+		Only_icon( ): $mol_button_major
+		Only_icon_scene( ): $demo_scene
 		Copy( ): $mol_button_copy
 		Copy_scene( ): $demo_scene
 		image_blob( ): $mol_blob

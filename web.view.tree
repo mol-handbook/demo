@@ -115,6 +115,8 @@ $mol_icon $mol_svg_root
 		<= Path $mol_svg_path
 			geometry <= path \
 
+$mol_icon_plus $mol_icon path \M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z
+
 $mol_icon_clipboard $mol_icon path \M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3
 
 $mol_icon_clipboard_outline $mol_icon path \M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V5H19V19H5V5H7V7Z
@@ -191,6 +193,15 @@ $demo_mol_button $demo_scenes
 		<= Minor_scene $demo_scene
 			scene <= Minor $mol_button_minor
 				title \Нажми на меня
+		<= With_icon_scene $demo_scene
+			scene <= With_icon $mol_button_major
+				sub /
+					<= Left_icon_plus $mol_icon_plus
+					<= title
+		<= Only_icon_scene $demo_scene
+			scene <= Only_icon $mol_button_major
+				sub /
+					<= Icon_plus $mol_icon_plus
 		<= Copy_scene $demo_scene
 			scene <= Copy $mol_button_copy
 				title \Скопировать "$mol"
