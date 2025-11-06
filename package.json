@@ -181,6 +181,8 @@
     "$mol_dom_capture",
     "$mol_dom_serialize",
     "$mol_fetch",
+    "$mol_rest_code",
+    "$mol_rest",
     "$mol_dom_parse"
   ],
   "dependencies": {
